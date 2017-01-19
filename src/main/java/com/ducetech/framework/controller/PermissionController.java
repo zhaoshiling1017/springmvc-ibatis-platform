@@ -31,7 +31,6 @@ import com.ducetech.framework.service.UserService;
 import com.ducetech.util.DateUtil;
 import com.ducetech.util.Encrypt;
 import com.ducetech.util.JsonUtils;
-import com.ducetech.util.MyCache;
 
 /**
  * 
