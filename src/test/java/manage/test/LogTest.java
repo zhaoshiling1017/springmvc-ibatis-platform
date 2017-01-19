@@ -1,19 +1,27 @@
 package manage.test;
 
+import com.ducetech.cache.CachePool;
 import com.google.common.base.*;
+import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.collect.ComparisonChain;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static com.google.common.base.Preconditions.*;
 import static com.google.common.base.Predicates.*;
@@ -26,7 +34,15 @@ import static com.google.common.collect.Sets.*;
 /**
  * Created by lenzhao on 17-1-11.
  */
+
+@WebAppConfiguration
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:applicationContext.xml")
 public class LogTest {
+
+    @Autowired
+    private CachePool cachePool;
+
     private static final Logger logger = LoggerFactory.getLogger(LogTest.class);
 
     @Test
@@ -120,4 +136,11 @@ public class LogTest {
         logger.info(cache.size()+"");
         logger.info(cache.getUnchecked("name"));
     }
+
+    @Test
+    public void propTest() {
+        //logger.info(System.getProperty("springmvc-ibatis-platform.root"));
+        logger.info(cachePool.getUsersByRoleIdFromCache("1").size()+"");
+    }
+
 }

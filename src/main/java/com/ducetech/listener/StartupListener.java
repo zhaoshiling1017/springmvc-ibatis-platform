@@ -2,11 +2,8 @@ package com.ducetech.listener;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import org.apache.commons.dbcp.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +13,8 @@ import org.springframework.stereotype.Service;
 
 import com.ducetech.framework.dao.RoleDAO;
 import com.ducetech.framework.dao.UserDAO;
-import com.ducetech.framework.model.Role;
-import com.ducetech.framework.model.User;
-import com.ducetech.util.CachePool;
 import com.ducetech.jobs.ScriptRunnerExecSql;
 import com.ducetech.util.DuceTechUtils;
-import com.ducetech.util.MyCache;
 
 
 @Service

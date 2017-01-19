@@ -8,7 +8,7 @@ log4j.appender.stdout.layout.ConversionPattern=%d{yyyy/MM/dd HH:mm:ss}  %c.%t(:%
 
 log4j.appender.R=org.apache.log4j.DailyRollingFileAppender
 ##------------------------------------------需配置参数开始------------------------------------------------------
-log4j.appender.R.File=/var/log/ducetech/pms.log
+log4j.appender.R.File=/var/log/ducetech/springmvc-ibatis-platform.log
 ##------------------------------------------需配置参数结束------------------------------------------------------
 log4j.appender.R.DatePattern = '.'yyyyMMdd
 

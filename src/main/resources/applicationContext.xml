@@ -25,6 +25,8 @@
 	<!-- context:component-scan base-package="com.ducetech.redis" /-->
 	<context:component-scan base-package="com.ducetech.jobs" />
 	<context:component-scan base-package="com.ducetech.listener" />
+	<context:component-scan base-package="com.ducetech.cache" />
+
 	<context:property-placeholder location="classpath:jdbc.properties" />
 
 	<!-- bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">

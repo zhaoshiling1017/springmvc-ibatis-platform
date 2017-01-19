@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ducetech.cache.CachePool;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.alibaba.fastjson.JSON;
-import com.ducetech.framework.controller.BaseController;
 import com.ducetech.framework.model.Department;
 import com.ducetech.framework.model.PagerRS;
 import com.ducetech.framework.model.Permission;
@@ -28,7 +28,6 @@ import com.ducetech.framework.service.DepartmentService;
 import com.ducetech.framework.service.PermissionService;
 import com.ducetech.framework.service.RoleService;
 import com.ducetech.framework.service.UserService;
-import com.ducetech.util.CachePool;
 import com.ducetech.util.DateUtil;
 import com.ducetech.util.Encrypt;
 import com.ducetech.util.JsonUtils;
@@ -420,20 +419,7 @@ public class PermissionController extends BaseController{
 	}
 	
 	
-	public void initRoleIdsCache(){
-		CachePool cachePool = CachePool.getInstance();
-		cachePool.clearAllItems();
-		MyCache myCache = new MyCache();
-		List<Role> roles = roleService.getRoleByQuery(new Role());
-		for (Role role : roles) {
-			role.getRoleId();
-			List<User> users = userService.getUsersByRoleId(role.getRoleId());
-			List<String> ids = new ArrayList<>();
-			for (int i = 0; i < users.size(); i++) {
-				ids.add(users.get(i).getUserId());
-			}
-			cachePool.putCacheItem(role.getRoleId(), users);
-			myCache.getRoleIdsCache().put(role.getRoleId(),ids);
-		}
+	public void initRoleIdsCache() {
+		CachePool.cleanUp(CachePool.DIC_ROLE_USER_LIST_NAME);
 	}
 }
