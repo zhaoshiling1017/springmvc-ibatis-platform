@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import com.ducetech.framework.dao.RoleDAO;
 import com.ducetech.framework.dao.UserDAO;
 import com.ducetech.jobs.ScriptRunnerExecSql;
-import com.ducetech.util.DuceTechUtils;
+import com.ducetech.util.DuceTechUtil;
 
 
 @Service
@@ -42,7 +42,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 	private void initDatabase(){
 		String isInitDatabase;
 		try {
-			isInitDatabase = DuceTechUtils.readProp("isInitDatabase");
+			isInitDatabase = DuceTechUtil.readProp("isInitDatabase");
 			if(Boolean.parseBoolean(isInitDatabase)){
 				ScriptRunnerExecSql execSql = new ScriptRunnerExecSql(dataSource);
 				execSql.execute();

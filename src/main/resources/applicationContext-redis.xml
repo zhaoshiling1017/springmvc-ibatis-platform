@@ -62,18 +62,19 @@
         </property -->
     </bean>
 
-    <bean id="topicMessageListener" class="com.ducetech.listener.TopicMessageListener">  
+    <!--bean id="topicMessageListener" class="com.ducetech.listener.TopicMessageListener">
         <property name="redisTemplate" ref="redisTemplate"></property>  
-    </bean>
+    </bean -->
 
-    <bean id="topicContainer" class="org.springframework.data.redis.listener.RedisMessageListenerContainer" destroy-method="destroy">  
-        <property name="connectionFactory" ref="connectionFactory"/>  
-        <property name="taskExecutor"><!-- 此处有个奇怪的问题，无法正确使用其他类型的Executor -->  
-            <bean class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">  
+    <!--bean id="topicContainer" class="org.springframework.data.redis.listener.RedisMessageListenerContainer" destroy-method="destroy"-->
+        <!--property name="connectionFactory" ref="connectionFactory"/-->
+        <!-- 此处有个奇怪的问题，无法正确使用其他类型的Executor -->
+        <!--property name="taskExecutor">
+            <bean class="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler">
                 <property name="poolSize" value="3"></property>  
-            </bean>  
-        </property>  
-        <property name="messageListeners">  
+            </bean>
+        </property-->
+        <!--property name="messageListeners">
             <map>  
                 <entry key-ref="topicMessageListener">  
                     <bean class="org.springframework.data.redis.listener.ChannelTopic">  
@@ -81,6 +82,6 @@
                     </bean>  
                 </entry>  
             </map>  
-        </property>  
-    </bean>          
+        </property-->
+    <!-- /bean -->
 </beans>

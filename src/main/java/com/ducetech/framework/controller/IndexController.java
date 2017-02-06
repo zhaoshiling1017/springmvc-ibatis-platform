@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.ducetech.api.security.IgnoreSecurity;
 import com.ducetech.util.DateUtil;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
@@ -19,7 +20,7 @@ import java.util.Date;
 public class IndexController extends BaseController implements EnvironmentAware {
 
 	private Environment env;
-	
+
 	@RequestMapping("/")
 	public String index(HttpServletRequest request, Model model) {
 		getLoginUser(request, model);

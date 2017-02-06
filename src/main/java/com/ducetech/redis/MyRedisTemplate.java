@@ -47,6 +47,10 @@ public interface MyRedisTemplate {
 
 	public void publish(String channel, String message);
 
-	public void expire(String key);
+	public boolean expire(String key, long l);
+
+	public void setx(String key, Object value, long l);
+
+	public boolean exists(String key);
 
 }

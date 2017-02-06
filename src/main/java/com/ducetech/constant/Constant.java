@@ -1,11 +1,5 @@
 package com.ducetech.constant;
 
-/** 
-* @ClassName: Constant  
-* @author chensf
-* @date 2016年7月29日 上午10:42:10 
-* @Description: 常量定义
-*/
 public class Constant {
 
 	//redis频道  系统频道

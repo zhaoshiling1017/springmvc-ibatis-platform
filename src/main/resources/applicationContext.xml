@@ -20,12 +20,17 @@
 	<task:annotation-driven executor="asyncExecutor" />
 	<task:executor id="asyncExecutor" pool-size="100-10000" queue-capacity="10"/>
 
-	<context:component-scan base-package="com.ducetech.*.dao" />
+	<!--context:component-scan base-package="com.ducetech.*.dao" />
 	<context:component-scan base-package="com.ducetech.*.service" />
-	<!-- context:component-scan base-package="com.ducetech.redis" /-->
+	<context:component-scan base-package="com.ducetech.redis" />
 	<context:component-scan base-package="com.ducetech.jobs" />
 	<context:component-scan base-package="com.ducetech.listener" />
-	<context:component-scan base-package="com.ducetech.cache" />
+	<context:component-scan base-package="com.ducetech.cache" /-->
+
+	<context:component-scan base-package="com.ducetech">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+	</context:component-scan>
 
 	<context:property-placeholder location="classpath:jdbc.properties" />
 
@@ -129,7 +134,9 @@
 		<!-- resolveLazily 为 false 时，请求一旦被 MultipartResolver 接手，它就会解析请求中的文件，而不必等待后续 controoler 主动从 MultipartRequest 中 getFile。 resolveLazily 为 true 时，只有等后续的 controller 主动调用 MultipartRequest.getFile 才会从原始请求中解析文件。 -->
 		<property name="resolveLazily" value="true" />
 	</bean>
+
+
 	<import resource="classpath:applicationContext-shiro.xml"/>
-	<!-- import resource="classpath:applicationContext-redis.xml" /-->
+	<import resource="classpath:applicationContext-redis.xml" />
 	<!-- <import resource="classpath:applicationContext-activiti.xml"/> -->
 </beans>

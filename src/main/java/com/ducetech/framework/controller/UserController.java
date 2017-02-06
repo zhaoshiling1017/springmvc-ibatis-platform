@@ -4,6 +4,7 @@ package com.ducetech.framework.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ducetech.api.security.TokenManager;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -29,7 +30,7 @@ public class UserController extends BaseController {
 	
 	@Autowired
 	private UserService userService;
-	
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginPage(HttpServletRequest request , Model model) {
 		if(request.getSession().getAttribute("DT_LOGIN_NAME")!=null){

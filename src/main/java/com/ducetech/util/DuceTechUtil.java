@@ -11,7 +11,7 @@ import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class DuceTechUtils {
+public class DuceTechUtil {
 	/** 
 	* @Title: readProp  
 	* @param key
@@ -20,7 +20,7 @@ public class DuceTechUtils {
 	*/
 	public static String readProp(String key) throws IOException{
 		Properties prop = new Properties();
-		InputStream in = DuceTechUtils.class.getClassLoader().getResourceAsStream(Constant.SYSTEM_PROP_FILE_NAME);
+		InputStream in = DuceTechUtil.class.getClassLoader().getResourceAsStream(Constant.SYSTEM_PROP_FILE_NAME);
 		prop.load(in);
 		in.close();
 		return prop.getProperty(key);

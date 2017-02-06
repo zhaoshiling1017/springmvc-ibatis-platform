@@ -1,11 +1,5 @@
 package com.ducetech.util;
 
-/** 
- * @ClassName: MD5  
- * @author chensf
- * @date 2015年12月3日 上午10:47:17 
- * @Description: MD5加密
- */
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 

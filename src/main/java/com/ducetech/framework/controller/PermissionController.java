@@ -1,7 +1,6 @@
 package com.ducetech.framework.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +29,7 @@ import com.ducetech.framework.service.RoleService;
 import com.ducetech.framework.service.UserService;
 import com.ducetech.util.DateUtil;
 import com.ducetech.util.Encrypt;
-import com.ducetech.util.JsonUtils;
+import com.ducetech.util.JsonUtil;
 
 /**
  * 
@@ -82,7 +81,7 @@ public class PermissionController extends BaseController{
 	*/
 	@RequestMapping(value = "/personData", method = RequestMethod.POST)
 	public void personData(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Query<User> query = JsonUtils.getSearchCondition(User.class, request);
+		Query<User> query = JsonUtil.getSearchCondition(User.class, request);
 		//去空字符串
 		query.getT().setEmployeeCode(query.getT().getEmployeeCode().trim());
 		query.getT().setName(query.getT().getName().trim());
@@ -242,7 +241,7 @@ public class PermissionController extends BaseController{
 	*/
 	@RequestMapping(value = "/roleData", method = RequestMethod.POST)
 	public void roleData(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Query<Role> query = JsonUtils.getSearchCondition(Role.class, request);
+		Query<Role> query = JsonUtil.getSearchCondition(Role.class, request);
 		PagerRS<Role> roles = roleService.getRoleByPager(query);
 		response.getWriter().write(JSON.toJSONString(roles));
 	}
@@ -354,7 +353,7 @@ public class PermissionController extends BaseController{
 	*/
 	@RequestMapping(value = "/rolePersonData", method = RequestMethod.POST)
 	public void rolePersonData(HttpServletResponse response, HttpServletRequest request) throws Exception {
-		Query<Role> query = JsonUtils.getSearchCondition(Role.class, request); 
+		Query<Role> query = JsonUtil.getSearchCondition(Role.class, request);
 		PagerRS<User> pageRS = userService.getUsersByRoleIdPage(query);
 		response.getWriter().write(JSON.toJSONString(pageRS));
 	}

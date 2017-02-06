@@ -9,16 +9,13 @@ import org.apache.poi.hssf.util.HSSFColor;
 
 import javax.imageio.ImageIO;
 
-/** 
-* @ClassName: PoiUtil  
-* @author chensf
-* @date 2016年1月7日 下午5:07:28 
-* @Description: 注意：应为EXCEL不能大规模的创建字体对象
-* 	因为创建的字体太多了，当调用HSSFWorkbook的createFont之后就创建一种字体，就算字体属性完全一样也是要创建一个新字体对象的；
-*	而创建的数目是有限的，因此不要频繁调用HSSFWorkbook的createFont方法，   
-*	把创建的font缓存起来，相同字体属性的就不要再create了
-*	粘贴的内容中由于格式或数据问题，可能引发了Excel的数据溢出，这时可能会出现错误。
-*/
+/**
+ *  注意：应为EXCEL不能大规模的创建字体对象
+ * 	因为创建的字体太多了，当调用HSSFWorkbook的createFont之后就创建一种字体，就算字体属性完全一样也是要创建一个新字体对象的；
+ *	而创建的数目是有限的，因此不要频繁调用HSSFWorkbook的createFont方法，
+ *	把创建的font缓存起来，相同字体属性的就不要再create了
+ *	粘贴的内容中由于格式或数据问题，可能引发了Excel的数据溢出，这时可能会出现错误。
+ */
 public class PoiUtil {
 	private static final String ENFONT = "Times New Roman";
 

@@ -56,7 +56,7 @@
 				/static/** = anon
 				/report/** = anon
 				/mobile/** = anon
-				/app/** = anon
+				/api/** = anon
 				<!-- /** = anon -->
 				/** = authc
             </value>

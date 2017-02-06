@@ -36,8 +36,8 @@ public class MyRedisTemplateImpl implements MyRedisTemplate {
 	}
 	
 	@Override
-	public void expire(String key) {
-		redisTemplate.expire(key, 30, TimeUnit.MINUTES);
+	public boolean expire(String key, long l) {
+		return redisTemplate.expire(key, l, TimeUnit.MINUTES);
 	}
 
 	@Override
@@ -123,5 +123,15 @@ public class MyRedisTemplateImpl implements MyRedisTemplate {
 	@Override
 	public void publish(String channel, String message) {
 		redisTemplate.convertAndSend(channel, message);
+	}
+
+	@Override
+	public void setx(String key, Object value, long l) {
+		redisTemplate.opsForValue().set(key, value, l, TimeUnit.MINUTES);
+	}
+
+	@Override
+	public boolean exists(String key) {
+		return redisTemplate.hasKey(key);
 	}
 }
