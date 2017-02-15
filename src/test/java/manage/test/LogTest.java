@@ -1,5 +1,6 @@
 package manage.test;
 
+import com.ducetech.api.remote.HelloService;
 import com.ducetech.cache.CachePool;
 import com.google.common.base.*;
 import com.google.common.cache.Cache;
@@ -42,6 +43,9 @@ public class LogTest {
 
     @Autowired
     private CachePool cachePool;
+
+    @Autowired
+    private HelloService helloBean;
 
     private static final Logger logger = LoggerFactory.getLogger(LogTest.class);
 
@@ -141,6 +145,11 @@ public class LogTest {
     public void propTest() {
         //logger.info(System.getProperty("springmvc-ibatis-platform.root"));
         logger.info(cachePool.getUsersByRoleIdFromCache("1").size()+"");
+    }
+
+    @Test
+    public void testHessian() {
+        logger.info("say {}", helloBean.hello("ahha"));
     }
 
 }

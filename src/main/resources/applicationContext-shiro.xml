@@ -57,6 +57,7 @@
 				/report/** = anon
 				/mobile/** = anon
 				/api/** = anon
+                /hessian/** = anon
 				<!-- /** = anon -->
 				/** = authc
             </value>

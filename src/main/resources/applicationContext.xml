@@ -135,6 +135,20 @@
 		<property name="resolveLazily" value="true" />
 	</bean>
 
+	<!--hessian server-->
+	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+	<bean id="helloService" class="com.ducetech.api.remote.impl.HelloServiceImpl"/>
+	<bean name="/helloService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="helloService"/>
+		<property name="serviceInterface" value="com.ducetech.api.remote.HelloService"/>
+	</bean>
+
+	<!-- hessian client -->
+	<bean id="helloBean" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+		<property name="serviceUrl" value="http://127.0.0.1:8080/springmvc-ibatis-platform/hessian/helloService" />
+		<property name="serviceInterface" value="com.ducetech.api.remote.HelloService" />
+		<property name="overloadEnabled" value="true"/>
+	</bean>
 
 	<import resource="classpath:applicationContext-shiro.xml"/>
 	<import resource="classpath:applicationContext-redis.xml" />
